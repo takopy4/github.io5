@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Калькулятор стоимости заказа</title>
+    <script src="calc.js" defer></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            color: #e5e7eb;
+            background: linear-gradient(135deg, #0f172a 0%, #312e81 50%, #0f172a 100%);
+        }
+        body {
+            flex-direction: column;
+            gap: 20px;
+        }
+        footer {
+            color: #94a3b8;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .card {
+            width: 100%;
+            max-width: 440px;
+            padding: 32px 28px;
+            background: #111827;
+            border: 1px solid #334155;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            margin: 0 0 6px;
+            font-size: 26px;
+            text-align: center;
+            color: #f8fafc;
+        }
+        .subtitle {
+            margin: 0 0 24px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        label {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 16px;
+            font-family: inherit;
+            color: #f1f5f9;
+            background: #0f172a;
+            border: 2px solid #334155;
+            border-radius: 12px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        option {
+            background: #0f172a;
+            color: #f1f5f9;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #818cf8;
+            box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.25);
+        }
+        button {
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: inherit;
+            color: #ffffff;
+            cursor: pointer;
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            border: none;
+            border-radius: 12px;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(129, 140, 248, 0.45);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        #result {
+            margin-top: 22px;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            color: #6ee7b7;
+            background: #064e3b;
+            border: 1px solid #10b981;
+            border-radius: 12px;
+        }
+        #result:empty {
+            display: none;
+        }
+        #result.error {
+            font-size: 15px;
+            color: #fca5a5;
+            background: #7f1d1d;
+            border-color: #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h1>Калькулятор заказа</h1>
+        <p class="subtitle">Выберите товар и укажите количество</p>
+        <form id="calc-form">
+            <label for="product">
+                Товар
+                <select id="product">
+                    <option value="990">Клавиатура — 990 ₽</option>
+                    <option value="2490">Наушники — 2490 ₽</option>
+                    <option value="15900">Монитор — 15900 ₽</option>
+                </select>
+            </label>
+            <label for="quantity">
+                Количество
+                <input type="text" id="quantity" value="1" autocomplete="off">
+            </label>
+            <button type="button" id="calc-button">Рассчитать стоимость</button>
+        </form>
+        <div id="result" aria-live="polite"></div>
+    </main>
+    <footer>Губанов Кирилл</footer>
+</body>
+</html>
